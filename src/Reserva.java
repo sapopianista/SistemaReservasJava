@@ -36,4 +36,13 @@ public abstract class Reserva implements Cancelavel{
     public void setData(LocalDate data) {
         this.data = data;
     }
+
+    @Override
+    public String toString() {
+        return String.format("ID: %d | Cliente: %s | Tipo: %s | Valor Total: R$ %.2f",
+                this.id,
+                this.nomeCliente,
+                this.getClass().getSimpleName(),
+                this.calcularValorTotal());
+    }
 }

@@ -15,10 +15,7 @@ public class Main {
 
         System.out.println("\n--- Lista de Reservas Cadastradas ---");
         for (Reserva r : gerenciador.listarTodas()) {
-            System.out.printf("ID: " + r.getId() +
-                    " | Cliente: " + r.getNomeCliente() +
-                    " | Tipo: " + r.getClass().getSimpleName() +
-                    " | Valor Total R$ %.2f\n", r.calcularValorTotal());
+            System.out.println(r);
         }
 
         System.out.println("\n--- Buscando Reserva por ID ---");
@@ -26,14 +23,18 @@ public class Main {
         if (encontrada != null) {
             System.out.println("Encontrada! Cliente: ID: " + encontrada.id +
                     " | " + encontrada.getNomeCliente());
+        } else {
+            System.out.println("Reserva não encontrada!");
         }
 
         System.out.println("\n--- Testando Cancelamento ---");
         System.out.println("Cancelar Camarote com 24h? " + camarote.processarCancelamento(24));
         System.out.println("Cancelar VIP com 24h? " + vip.processarCancelamento(24));
 
+        System.out.println("\n--- Editando Reserva ---");
+        gerenciador.editarReserva(2, camarote);
+
         System.out.println("\n--- Removendo Reservas ---");
         gerenciador.removerReserva(1);
-        System.out.println("Total de reservass restantes: " + gerenciador.listarTodas().size());
     }
 }
